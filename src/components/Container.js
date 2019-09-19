@@ -1,5 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
 import * as colors from './colors.json';
 
 
@@ -59,14 +60,14 @@ export default ({children}) => (
         {children}
         
     </Container>
-    <Footer style={{fontSize: '1rem'}}>
+    <Footer style={{fontSize: '1rem', paddingTop: '1rem'}}>
         <Grid>
-            <p>Statement</p>
-            <p>Essays</p>
-            <p>Members</p>
-            <p>Contact</p>
+            <p><Link to='/about'>Statement</Link></p>
+            <p><Link to='/blog'>Essays</Link></p>
+            <p><Link to='/members'>Members</Link></p>
+            <p><Link to='/contact'>contact</Link></p>
         </Grid>
-        <p>Developed by Tankcaster</p>
+        <p>Developed by <a href="https://github.com/Tankcaster">Tankcaster</a></p>
     </Footer>
     </div>
 );
