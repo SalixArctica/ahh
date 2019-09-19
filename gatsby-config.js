@@ -7,3 +7,16 @@
 module.exports = {
   /* Your site config here */
 }
+module.exports = {
+  plugins: [
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/static/`,
+      },
+    },
+    `gatsby-transformer-remark`,
+  ]
+}

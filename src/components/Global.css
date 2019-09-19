@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Roboto&display=swap');
+
+html {
+    background-color: #BDB5A2;
+    font-family: 'Roboto';
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
