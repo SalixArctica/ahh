@@ -1,5 +1,6 @@
 ---
 title: "Viking Drinking Practices"
+author: "Bob Bobson"
 date: "2019-08-10"
 ---
 

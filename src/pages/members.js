@@ -47,6 +47,7 @@ export default () => (
             <h1>Our Member Organizations</h1>
         </Banner>
         <Container> 
+            <p>Organizations and families commited to being the living continuation of the Old Sid</p>
             <div style={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
             {dummyData.map(org => {
                 return(

@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Banner from '../components/Banner'
 import Container from '../components/Container'
+import Grid from '../components/Grid';
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -12,6 +13,10 @@ export default ({ data }) => {
         <h1>{post.frontmatter.title}</h1>
       </Banner>
       <Container>
+        <Grid style={{color: 'grey'}}>
+          <p>written by {post.frontmatter.author}</p>
+          <p style={{textAlign: 'right'}}>posted on {post.frontmatter.date}</p>
+        </Grid>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Container>
     </Layout>
@@ -24,6 +29,8 @@ export const query = graphql`
       html
       frontmatter {
         title
+        author
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }

@@ -1,11 +1,13 @@
 import React from "react"
+import { graphql, Link } from 'gatsby' 
 import Layout from "../components/Layout"
 import Banner from '../components/Banner'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
+import Grid from '../components/Grid';
 
 
-export default () => (
+export default ({ data }) => (
     <Layout>
         <Banner>
             <Logo/>
@@ -44,6 +46,41 @@ export default () => (
             to join us in taking a stand for historical heathenry, and help us in
             our mission to help revive the true Old Sid, you may apply to be
             included on our directory here.</p>
+
+            <h2 style={{borderBottom: '1px solid black', marginBottom: '.5rem'}}>Recent Posts</h2>
+            <Grid col='3'>
+                {data.allMarkdownRemark.edges.map(({ node }) => (
+                    <Link to={node.fields.slug} style={{marginRight: '1rem'}}>
+                        <div key={node.id}  style={{"marginBottom": "5rem"}}> 
+                        <h5 style={{marginBottom: '0'}}>
+                            {node.frontmatter.title}{" "}
+                        </h5>
+                        <p style={{fontSize: '1rem'}}>{node.excerpt}</p>
+                        </div>
+                    </Link>
+                ))}
+            </Grid>
         </Container>
     </Layout>
 )
+
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+          }
+          fields {
+              slug
+          }
+          excerpt
+        }
+      }
+    }
+  }
+`

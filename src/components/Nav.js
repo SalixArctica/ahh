@@ -45,7 +45,7 @@ export default () => (
             <Styledli><StyledLink to='/about'>About</StyledLink></Styledli>
             <Styledli><StyledLink to='/blog'>Blog</StyledLink></Styledli>
             <Styledli><Link to='/members'>Members</Link></Styledli>
-            <Styledli>Contact</Styledli>
+            <Styledli><Link to='/contact'>Contact</Link></Styledli>
         </Styledul>
     </Nav>
 )
