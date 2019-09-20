@@ -50,12 +50,12 @@ export default ({ data }) => (
             <h2 style={{borderBottom: '1px solid black', marginBottom: '.5rem'}}>Recent Posts</h2>
             <Grid col='3'>
                 {data.allMarkdownRemark.edges.map(({ node }) => (
-                    <Link to={node.fields.slug} style={{marginRight: '1rem'}}>
+                    <Link to={node.fields.slug} style={{marginRight: '2rem'}}>
                         <div key={node.id}  style={{"marginBottom": "5rem"}}> 
-                        <h5 style={{marginBottom: '0'}}>
+                        <h5 style={{marginBottom: '0', borderBottom: '1px solid black'}}>
                             {node.frontmatter.title}{" "}
                         </h5>
-                        <p style={{fontSize: '1rem'}}>{node.excerpt}</p>
+                        <p style={{fontSize: '1rem', marginTop: '0rem'}}>{node.excerpt}</p>
                         </div>
                     </Link>
                 ))}

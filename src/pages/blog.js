@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Container from '../components/Container'
 import Banner from '../components/Banner'
+import Grid from '../components/Grid'
 
 export default ({ data }) => {
   console.log(data)
@@ -15,13 +16,16 @@ export default ({ data }) => {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <Link to={node.fields.slug}>
             <div key={node.id}  style={{"marginBottom": "5rem"}}> 
-              <h3>
+              <Grid style={{borderBottom: '1px solid black'}}>
+              <h3 style={{marginBottom: '0px'}}>
                 {node.frontmatter.title}{" "}
-                <span>
-                  — {node.frontmatter.date}
+                <span style={{color: 'grey'}}>
+                  — {node.frontmatter.author}
                 </span>
               </h3>
-              <p>{node.excerpt}</p>
+              <p style={{marginBottom: '0', verticalAlign: 'baseline', textAlign: 'right', color: 'grey'}}>{node.frontmatter.date}</p>
+              </Grid>
+              <p style={{marginTop: '0'}}>{node.excerpt}</p>
             </div>
           </Link>
         ))}
