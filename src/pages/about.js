@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Container from '../components/Container';
@@ -24,7 +25,9 @@ export default () => (
                 <li>Old Sid communities understand that we are entitled to adopt new traditions where such things do not conflict with fundamental historically attested practices. Tradition is adaptive, and a commitment to historicity is not a commitment to stagnancy.</li>
                 <li>Old Sid communities share a commitment to academic honesty and integrity. Accordingly, where Old Sid communities have developed new practices or traditions of their own, or where they have deviated from historically attested practices for compelling reasons, Old Sid communities should not present such new practices as representative of historical practice and should be forward with the truth regarding such new practices.</li>
             </ol>
-            <p>The Association for Historical Heathenry is a loose confederation of heathen families, communities, and formal organizations. We are bound together by our shared commitment to observing the Old Sid in general accordance with the ideals expressed in this General Statement. We have come together in this Association for the purpose of divorcing historical heathenry from other forms of modern paganism. More importantly, we seek to further the growth and development of the Old Sid in the modern world by pulling like-minded heathens together and providing a forum in which they may network and share ideas.</p>
+            <p style={{borderBottom: '1px solid black', paddingBottom: '3rem'}}>The Association for Historical Heathenry is a loose confederation of heathen families, communities, and formal organizations. We are bound together by our shared commitment to observing the Old Sid in general accordance with the ideals expressed in this General Statement. We have come together in this Association for the purpose of divorcing historical heathenry from other forms of modern paganism. More importantly, we seek to further the growth and development of the Old Sid in the modern world by pulling like-minded heathens together and providing a forum in which they may network and share ideas.</p>
+            <h3  style={{textAlign: 'center'}}>Sound good? <Link to='apply'><u>Consider joining</u></Link></h3>
+            <h3 style={{textAlign: 'center'}}>Have questions? <Link to='contact'><u>Get in touch</u></Link></h3>
         </Container>
     </Layout>
 )

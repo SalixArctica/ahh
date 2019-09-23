@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import * as colors from './colors.json';
+import Grid from './Grid';
 
 
 const Container = styled.div`
@@ -48,12 +49,6 @@ const Footer = styled.div`
     }
 `
 
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    border-bottom: 1px white solid;
-`
-
 export default ({children}) => (
     <div>
     <Container>
@@ -61,13 +56,18 @@ export default ({children}) => (
         
     </Container>
     <Footer style={{fontSize: '1rem', paddingTop: '1rem'}}>
-        <Grid>
+        <Grid style={{borderBottom: '1px solid white'}} col='4'>
             <p><Link to='/about'>Statement</Link></p>
             <p><Link to='/blog'>Essays</Link></p>
             <p><Link to='/members'>Members</Link></p>
             <p><Link to='/contact'>contact</Link></p>
         </Grid>
-        <p>Developed by <a href="https://github.com/Tankcaster">Tankcaster</a></p>
+        <Grid col='4'>
+            <p>Privacy Policy</p>
+            <span/>
+            <span/>    
+            <p>Developed by <a href="https://github.com/Tankcaster">Tankcaster</a></p>
+        </Grid>
     </Footer>
     </div>
 );

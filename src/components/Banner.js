@@ -7,7 +7,7 @@ import trees from '../../static/ecosystem.jpg'
 
 const Container = styled.div`
     position: relative;
-    min-height: 40vh;
+    min-height: 30vh;
     max-height: 90vh;
     text-align: center;
     height: fit-content;
@@ -38,6 +38,9 @@ const CenteredDiv = styled.div`
 
     & > * {
         margin: 0;
+    }
+    & > h1 {
+        line-height: 20vh;
     }
 `
 

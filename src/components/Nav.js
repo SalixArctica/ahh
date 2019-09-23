@@ -42,8 +42,8 @@ export default () => (
     <Nav>
         <Title><StyledLink to='/'>AHH</StyledLink></Title>
         <Styledul>
-            <Styledli><StyledLink to='/about'>About</StyledLink></Styledli>
-            <Styledli><StyledLink to='/blog'>Blog</StyledLink></Styledli>
+            <Styledli><StyledLink to='/about'>Statement</StyledLink></Styledli>
+            <Styledli><StyledLink to='/blog'>Essays</StyledLink></Styledli>
             <Styledli><Link to='/members'>Members</Link></Styledli>
             <Styledli><Link to='/contact'>Contact</Link></Styledli>
         </Styledul>
