@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  pathPrefix: '/preview/ahh'
 }
 module.exports = {
   proxy: {

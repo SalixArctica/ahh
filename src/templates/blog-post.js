@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Banner from '../components/Banner'
 import Container from '../components/Container'
 import Grid from '../components/Grid';
