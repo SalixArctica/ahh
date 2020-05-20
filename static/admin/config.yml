@@ -1,0 +1,17 @@
+backend:
+  name: test-repo
+  
+media_folder: static/assets
+public_folder: /assets
+collections:
+  - name: articles
+    label: Articles
+    folder: src/markdown/articles
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { name: title, label: Title }
+      - { name: author, label: Author }
+      - { name: date, label: Date, widget: datetime }
+      - { name: body, label: Body, widget: markdown }
