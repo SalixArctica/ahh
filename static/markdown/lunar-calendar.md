@@ -2,6 +2,7 @@
 title: "The Lunar Calendar"
 author: "Jimmy Neutron"
 date: "2019-08-20"
+type: "Informative"
 ---
 
 Why do people tend to associate Vikings and drinking? In our modern age, most people have at least heard about the ferocious men of the North and their mighty feats but were the Vikings just drunkards, ready to gulp down any alcoholic beverages in between two longship raids? The answer is actually much more complicated and fascinating than that.

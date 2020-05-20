@@ -2,6 +2,7 @@
 title: "So Blots a thing"
 author: "Sally Smith"
 date: "2019-09-19"
+type: "Opinion"
 ---
     
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper massa sed leo maximus facilisis. Proin efficitur sapien in posuere placerat. Aenean quis dolor non felis aliquam aliquam. Ut ac turpis et est pretium finibus. Sed nec ante sed turpis sollicitudin gravida. Pellentesque efficitur vehicula dolor, ac fermentum augue laoreet ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc in pulvinar turpis. Duis imperdiet faucibus blandit.

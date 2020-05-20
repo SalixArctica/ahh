@@ -3,7 +3,8 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Container from '../components/Container'
 import Banner from '../components/Banner'
-import Grid from '../components/Grid'
+import BlogEntry from '../components/blogEntry';
+
 
 export default ({ data }) => {
   console.log(data)
@@ -14,20 +15,7 @@ export default ({ data }) => {
       </Banner>
       <Container>
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <Link to={node.fields.slug}>
-            <div key={node.id}  style={{"marginBottom": "5rem"}}> 
-              <Grid style={{borderBottom: '1px solid black'}}>
-              <h3 style={{marginBottom: '0px'}}>
-                {node.frontmatter.title}{" "}
-                <span style={{color: 'grey'}}>
-                  — {node.frontmatter.author}
-                </span>
-              </h3>
-              <p style={{marginBottom: '0', verticalAlign: 'baseline', textAlign: 'right', color: 'grey'}}>{node.frontmatter.date}</p>
-              </Grid>
-              <p style={{marginTop: '0'}}>{node.excerpt}</p>
-            </div>
-          </Link>
+          <BlogEntry data={node}/>
         ))}
       </Container>
     </Layout>
@@ -45,6 +33,7 @@ export const query = graphql`
             title
             author
             date(formatString: "MMMM DD, YYYY")
+            type
           }
           fields {
             slug
