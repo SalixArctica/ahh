@@ -5,6 +5,7 @@ import Container from '../components/Container'
 import Logo from '../../static/logo.png'
 import Card from '../components/Card'
 import { Link } from 'gatsby'
+import MemberCard from '../components/memberCard'
 
 const dummyData = [
     {
@@ -48,20 +49,11 @@ export default () => (
         </Banner>
         <Container> 
             <p>Organizations and families commited to being the living continuation of the Old Sid</p>
-            <div style={{display: "grid", gridTemplateColumns: "1fr 1fr"}}>
             {dummyData.map(org => {
                 return(
-                    <Card
-                        title={org.title}
-                        location={org.location}
-                        tradition={org.tradition}
-                        contact={org.contact}
-                        website={org.website}
-                        classification={org.classification}
-                    />
+                    <MemberCard member={org}/>
                 );
             })}
-            </div>
         </Container>
     </Layout>
 )

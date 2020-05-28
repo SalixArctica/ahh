@@ -25,28 +25,30 @@ const Title = styled.h3`
 `
 
 const BlogEntry = styled.div`
-    margin: 0 0 3rem 0;
+    margin: 0 0 1rem 0;
     border-bottom: 1px solid black;
+    background: slategray;
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
 `
 
 const AuthorDateInfo = styled.p`
-    color: grey;
+    color: lightgray;
     text-align: right;
     margin: 0;
 `
 
-  
-
-export default ({data}) => (
-    <Link to={data.fields.slug}>
+export default ({ article }) => (
+    <Link to={'/articles/' + article.title.replace(/\s/g, '_')}>
         <BlogEntry>
             <Grid>
                 <div>
-                    <Title>{data.frontmatter.title}</Title>
-                    <TypeTag type={data.frontmatter.type}> {data.frontmatter.type}</TypeTag>
+                    <Title>{article.title}</Title>
+                    <TypeTag type={article.type}> {article.type}</TypeTag>
                 </div>
                 <div>
-                    <AuthorDateInfo>{data.frontmatter.author} - {data.frontmatter.date}</AuthorDateInfo>
+                    <AuthorDateInfo>{article.author} - {article.date}</AuthorDateInfo>
                 </div>
             </Grid>
             

@@ -5,33 +5,36 @@ import Banner from '../components/Banner'
 import Container from '../components/Container'
 import Grid from '../components/Grid';
 
-export default ({ data }) => {
-  const post = data.markdownRemark
+export default ({ data: { strapi: { publishedArticle: article }} }) => {
+
   return (
     <Layout>
       <Banner>
-        <h1>{post.frontmatter.title}</h1>
+        <h1>{article.title}</h1>
       </Banner>
       <Container>
         <Grid style={{color: 'grey'}}>
-          <p>written by {post.frontmatter.author}</p>
-          <p style={{textAlign: 'right'}}>posted on {post.frontmatter.date}</p>
+          <p>written by {article.author}</p>
+          <p style={{textAlign: 'right'}}>posted on {article.date}</p>
         </Grid>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div dangerouslySetInnerHTML={{ __html: article.body }} />
       </Container>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        author
-        date(formatString: "MMMM DD, YYYY")
-      }
+  query($id: ID!) {
+  strapi {
+    publishedArticle(id: $id) {
+      body
+      author
+      id
+      publish
+      title
+      type
     }
   }
+}
+
 `

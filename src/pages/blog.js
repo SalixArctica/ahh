@@ -6,16 +6,16 @@ import Banner from '../components/Banner'
 import BlogEntry from '../components/blogEntry';
 
 
-export default ({ data }) => {
-  console.log(data)
+export default ({ data: { strapi: { publishedArticles }} }) => {
+
   return (
     <Layout>
       <Banner>
           <h1>Blog</h1>
       </Banner>
       <Container>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <BlogEntry data={node}/>
+        {publishedArticles.map(article => (
+          <BlogEntry article={article}/>
         ))}
       </Container>
     </Layout>
@@ -23,24 +23,17 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query {
-    allMarkdownRemark {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            author
-            date(formatString: "MMMM DD, YYYY")
-            type
-          }
-          fields {
-            slug
-          }
-          excerpt
-        }
-      }
+query {
+  strapi {
+    publishedArticles {
+      author
+      body
+      id
+      title
+      type
+      publish
     }
   }
+}
+
 `

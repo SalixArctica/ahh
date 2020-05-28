@@ -5,6 +5,7 @@ import Banner from '../components/Banner'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import Grid from '../components/Grid';
+import { getUser, isLoggedIn } from "../services/auth"
 
 
 export default ({ data }) => (

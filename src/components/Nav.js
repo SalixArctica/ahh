@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, navigate } from "gatsby"
 import * as colors from './colors.json';
 
 const Nav = styled.div`
