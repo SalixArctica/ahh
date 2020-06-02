@@ -18,4 +18,4 @@ const StyledLabel = styled.label`
     margin-right: 1rem;
 `
 
-export { StyledInput, StyledSelect, StyledLabel };
+export { StyledInput, StyledSelect, StyledLabel};

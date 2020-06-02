@@ -8,7 +8,7 @@ import Grid from '../components/Grid';
 import { getUser, isLoggedIn } from "../services/auth"
 
 
-export default ({ data }) => (
+export default ({ data: { strapi: { publishedArticles: articles }} }) => (
     <Layout>
         <Banner>
             <Logo/>
@@ -50,13 +50,12 @@ export default ({ data }) => (
 
             <h2 style={{borderBottom: '1px solid black', marginBottom: '.5rem'}}>Recent Posts</h2>
             <Grid col='3'>
-                {data.allMarkdownRemark.edges.map(({ node }) => (
-                    <Link to={node.fields.slug} style={{marginRight: '2rem'}}>
-                        <div key={node.id}  style={{"marginBottom": "5rem"}}> 
+                {articles.map(article => (
+                    <Link to={'/articles/' + article.title.replace(/\s/g, '_')} style={{marginRight: '2rem'}}>
+                        <div key={article.id}  style={{"marginBottom": "5rem"}}> 
                         <h5 style={{marginBottom: '0', borderBottom: '1px solid black'}}>
-                            {node.frontmatter.title}{" "}
+                            {article.title}{" "}
                         </h5>
-                        <p style={{fontSize: '1rem', marginTop: '0rem'}}>{node.excerpt}</p>
                         </div>
                     </Link>
                 ))}
@@ -66,22 +65,16 @@ export default ({ data }) => (
 )
 
 export const query = graphql`
-  query {
-    allMarkdownRemark {
-      totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-              slug
-          }
-          excerpt
-        }
-      }
+query {
+  strapi {
+    publishedArticles {
+      author
+      body
+      id
+      title
+      type
+      publish
     }
   }
+}
 `
