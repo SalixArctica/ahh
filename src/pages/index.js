@@ -5,7 +5,6 @@ import Banner from '../components/Banner'
 import Container from '../components/Container'
 import Logo from '../components/Logo'
 import Grid from '../components/Grid';
-import { getUser, isLoggedIn } from "../services/auth"
 
 
 export default ({ data: { strapi: { publishedArticles: articles }} }) => (
@@ -73,7 +72,7 @@ query {
       id
       title
       type
-      publish
+      publish_date
     }
   }
 }

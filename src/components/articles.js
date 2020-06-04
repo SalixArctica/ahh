@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Container from '../components/Container'
 import Grid from '../components/Grid'
 import { getUser } from '../services/auth'
@@ -16,9 +16,7 @@ const reorder = (list, startIndex, endIndex) => {
     return result;
 };
 
-/**
- * Moves an item from one list to another list.
- */
+//Moves an item from one list to another list.
 const move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
@@ -56,15 +54,20 @@ export default class App extends Component {
         }
       }
 
-      //get drafts
-      fetch('http://localhost:1337/drafts', fetchConfig)
-      .then(res => res.json())
-      .then(drafts => this.setState({drafts}))
+        //get drafts and drafts in editing
+        fetch('http://localhost:1337/drafts', fetchConfig)
+        .then(res => res.json())
+        .then(drafts => {
+            let editing = drafts.filter(draft => draft.editing);
+            let filteredDrafts = drafts.filter(draft => !draft.editing)
+            this.setState({
+                editing,
+                drafts: filteredDrafts
+            })
+        })
 
-      //get edited articles
-      fetch('http://localhost:1337/edited-articles', fetchConfig)
-      .then(res => res.json())
-      .then(editing => this.setState({editing}))
+
+
 
       //get published articles
       fetch('http://localhost:1337/published-articles', fetchConfig)
@@ -80,6 +83,7 @@ export default class App extends Component {
             return;
         }
 
+        //reordered within a list
         if (source.droppableId === destination.droppableId) {
             const items = reorder(
                 this.state[source.droppableId],
@@ -90,7 +94,86 @@ export default class App extends Component {
             let state = { [source.droppableId]: items };
 
             this.setState(state);
-        } else {
+        } 
+        //moved to a different list
+        else {
+            
+
+            //update the api about the move
+            let movedArticle = this.state[source.droppableId][source.index];
+
+
+
+            //check if its an article is being published or moved in/out of editing
+            if(destination.droppableId === 'published') {
+
+                if(!window.confirm(`Are you sure you want to publish, "${movedArticle.title}"?`)) {
+                    return
+                }
+
+                movedArticle.publish_date = new Date().toISOString();
+
+                fetch('http://localhost:1337/published-articles/', {
+                    method: 'POST',
+                    headers: {
+                        "Authorization": `Bearer ${getUser().jwt}`
+                    },
+                    body: JSON.stringify(movedArticle)
+                })
+                .then(res => {
+                    if(res.status === 200) {
+                        fetch('http://localhost:1337/drafts/' + movedArticle.id, {
+                            method: 'DELETE',
+                            headers: {
+                            "Authorization": `Bearer ${getUser().jwt}`
+                            },
+                        })
+                    }
+                })
+                .catch(err => console.error);
+
+            } else {
+
+                destination.droppableId === 'editing' ? movedArticle.editing = true : movedArticle.editing = false;
+
+                if(source.droppableId === 'published') {
+
+                    fetch('http://localhost:1337/drafts/', {
+                        method: 'POST',
+                        headers: {
+                            "Authorization": `Bearer ${getUser().jwt}`
+                        },
+                        body: JSON.stringify(movedArticle)
+                    })
+                    .then(res => {
+                        if(res.status === 200) {
+                            fetch('http://localhost:1337/published-articles/' + movedArticle.id, {
+                                method: 'DELETE',
+                                headers: {
+                                "Authorization": `Bearer ${getUser().jwt}`
+                                },
+                            })
+                        }
+                    })
+                    .catch(err => console.error);
+                } else {
+
+                    fetch('http://localhost:1337/drafts/' + movedArticle.id,{
+                        method: 'PUT',
+                        headers: {
+                            "Authorization": `Bearer ${getUser().jwt}`
+                        },
+                            body: JSON.stringify(movedArticle)
+                    })
+                    .then(res => console.log(res))
+                    .catch(err => console.error)
+                }
+            }
+
+            
+
+
+            //handle local state
             const result = move(
                 this.state[source.droppableId],
                 this.state[destination.droppableId],

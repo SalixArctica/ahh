@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import MarkdownIt from 'markdown-it'
 import MdEditor from 'react-markdown-editor-lite'
 import Container from './Container'
-import styled from 'styled-components'
 import Grid from './Grid'
 import { StyledInput, StyledLabel, StyledSelect } from './InputElems'
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Grid from '../components/Grid'
-import { Link } from 'gatsby';
 
 const Title = styled.h3`
     display: inline;

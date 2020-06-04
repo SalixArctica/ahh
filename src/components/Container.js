@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import * as colors from './colors.json';
 import Grid from './Grid';
-import { getUser, isLoggedIn, logout } from "../services/auth"
+import { isLoggedIn, logout } from "../services/auth"
 
 
 const Container = styled.div`
@@ -59,7 +59,7 @@ export default ({children}) => (
         </Container>
         <Footer style={{fontSize: '1rem', paddingTop: '1rem'}}>
             <Grid style={{borderBottom: '1px solid white'}} col='5'>
-                {isLoggedIn() ? (<p onClick={logout}><Link to='/admin/login'>Logout</Link></p>) : (<p><Link to='/admin/login'>Login</Link></p>)}
+                {isLoggedIn() ? (<Link onClick={logout} to='/admin/login'>Logout</Link>) : (<p><Link to='/admin/login'>Login</Link></p>)}
                 <p><Link to='/admin/articles'>Admin</Link></p>
                 <p><Link to='/blog'>Essays</Link></p>
                 <p><Link to='/members'>Members</Link></p>

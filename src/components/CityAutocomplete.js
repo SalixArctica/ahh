@@ -3,7 +3,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import { Helmet } from "react-helmet"
+import { StyledInput } from './InputElems'
  
 class LocationSearchInput extends React.Component {
   constructor(props) {
@@ -28,13 +28,13 @@ class LocationSearchInput extends React.Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        searchOptions={{types: ['(cities)']}}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-            <input
+            <StyledInput
               {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
+                placeholder: 'Search Places ...'
               })}
             />
             <div className="autocomplete-dropdown-container">

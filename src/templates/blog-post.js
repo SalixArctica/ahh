@@ -30,7 +30,7 @@ export const query = graphql`
       body
       author
       id
-      publish
+      publish_date
       title
       type
     }

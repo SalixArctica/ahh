@@ -2,9 +2,6 @@ import React from "react"
 import Layout from "../components/Layout"
 import Banner from '../components/Banner'
 import Container from '../components/Container'
-import Logo from '../../static/logo.png'
-import Card from '../components/Card'
-import { Link } from 'gatsby'
 import MemberCard from '../components/memberCard'
 
 const dummyData = [

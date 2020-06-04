@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import * as colors from './colors.json';
 
 const StyledInput = styled.input`
     display: block;

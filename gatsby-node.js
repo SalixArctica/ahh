@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions }) => {
           author
           body
           id
-          publish
+          publish_date
           title
           type
         }

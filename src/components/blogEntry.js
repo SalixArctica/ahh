@@ -11,6 +11,9 @@ const colorFromType = (type) => {
             return "Orange";
         case "Informative":
             return "lightgreen";
+        default:
+            return "grey";
+
     }
 }
 

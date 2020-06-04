@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import Banner from '../components/Banner';
 import Container from '../components/Container';
@@ -43,7 +43,6 @@ export default () => {
                 <h1>Apply for Membership</h1>
             </Banner>
             <Container>
-                <CityAutocomplete/>
                 <Formik
                     initialValues={{
                         type: 0,
@@ -85,15 +84,16 @@ export default () => {
                                     name="email"
                                     formik={formik}
                                 />
+                                <CityAutocomplete/>
                                 {formik.values.type > 2 ? (
                                     <>
                                         <FormikTextInput
-                                            title={`Name of ${formik.values.type == 3 ? "Community" : "Organization"}`}
+                                            title={`Name of ${formik.values.type === 3 ? "Community" : "Organization"}`}
                                             name="orgName"
                                             formik={formik}
                                         />
                                         <FormikSelect
-                                            title={`Size of ${formik.values.type == 3 ? "Community" : "Organization"} (approximately)`}
+                                            title={`Size of ${formik.values.type === 3 ? "Community" : "Organization"} (approximately)`}
                                             name="size"
                                             formik={formik}
                                         >
@@ -109,7 +109,7 @@ export default () => {
                                             <option value='50'>50</option>
                                             <option value='55'>>50</option>
                                         </FormikSelect>
-                                        {formik.values.type == 4 ? (
+                                        {formik.values.type === 4 ? (
                                             <FormikTextInput
                                                 title="Tradition"
                                                 name="tradition"

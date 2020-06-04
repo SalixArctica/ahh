@@ -8,7 +8,7 @@ import Logo from '../../static/logo.png'
 export default () => (
     <Layout>
         <Banner>
-            <img width="600" src={Logo} />
+            <img width="600" alt="ahh logo" src={Logo} />
         </Banner>
         <Container> 
             <h1>Our Statement of Beleif</h1>
